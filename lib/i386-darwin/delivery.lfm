@@ -1,0 +1,16 @@
+object Form3: TForm3
+  Left = 944
+  Height = 174
+  Top = 233
+  Width = 295
+  Caption = 'Delivery Date'
+  OnShow = FormShow
+  LCLVersion = '1.8.0.6'
+  object Calendar: TCalendarDialog
+    Date = 43137
+    OKCaption = '&OK'
+    CancelCaption = 'Cancel'
+    left = 40
+    top = 40
+  end
+end

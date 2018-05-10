@@ -1,0 +1,663 @@
+object Form1: TForm1
+  Left = 408
+  Height = 618
+  Top = 148
+  Width = 1200
+  ActiveControl = Panel1
+  Caption = 'Proto - Merchant Portal Tree V1.10ß'
+  ClientHeight = 618
+  ClientWidth = 1200
+  Color = clWhite
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '1.8.0.6'
+  object GroupBox2: TGroupBox
+    Left = 0
+    Height = 315
+    Top = 261
+    Width = 768
+    Align = alLeft
+    Caption = 'Items'
+    ClientHeight = 295
+    ClientWidth = 764
+    TabOrder = 0
+    object DBGridItems: TDBGrid
+      Left = 0
+      Height = 256
+      Top = 0
+      Width = 764
+      Align = alClient
+      Color = clWindow
+      Columns = <      
+        item
+          Title.Caption = 'Lease'
+          Width = 40
+          FieldName = 'lease'
+        end      
+        item
+          Title.Caption = 'SKU'
+          Width = 30
+          FieldName = 'item'
+        end      
+        item
+          ReadOnly = True
+          Title.Caption = 'Qty'
+          Width = 30
+          FieldName = 'qty'
+        end      
+        item
+          MaxSize = 100
+          Title.Caption = 'Unit Price'
+          Width = 60
+          FieldName = 'price'
+        end      
+        item
+          Title.Caption = 'Total'
+          Width = 60
+          FieldName = 'total'
+        end      
+        item
+          Title.Caption = 'Delivery Date'
+          Width = 80
+          FieldName = 'dod'
+        end      
+        item
+          Title.Caption = 'Post Fund'
+          Width = 60
+          FieldName = 'postFund'
+        end      
+        item
+          Title.Caption = 'Fund Date'
+          Width = 80
+          FieldName = 'fundDate'
+        end      
+        item
+          Title.Caption = 'Fund Time'
+          Width = 80
+          FieldName = 'fundTime'
+        end      
+        item
+          Title.Caption = 'Status'
+          Width = 80
+          FieldName = 'status'
+        end      
+        item
+          Title.Caption = 'Batch No'
+          Width = 65
+          FieldName = 'batch'
+        end      
+        item
+          Title.Caption = 'Reference'
+          Width = 64
+          FieldName = 'Reference'
+        end>
+      DataSource = DSItems
+      ReadOnly = True
+      TabOrder = 0
+      OnDblClick = DBGridItemsDblClick
+      OnMouseDown = DBGridItemsMouseDown
+    end
+    object PanelApplyTriggers: TPanel
+      Left = 0
+      Height = 39
+      Top = 256
+      Width = 764
+      Align = alBottom
+      ClientHeight = 39
+      ClientWidth = 764
+      TabOrder = 1
+      object btnApplyTriggers: TButton
+        Left = 7
+        Height = 25
+        Top = 6
+        Width = 251
+        Caption = 'Save Session'
+        OnClick = btnApplyTriggersClick
+        TabOrder = 0
+      end
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 42
+    Top = 576
+    Width = 1200
+    Align = alBottom
+    ClientHeight = 42
+    ClientWidth = 1200
+    Color = clSilver
+    ParentColor = False
+    TabOrder = 1
+    object btnClose: TButton
+      Left = 8
+      Height = 25
+      Top = 10
+      Width = 75
+      Caption = 'Close'
+      OnClick = btnCloseClick
+      TabOrder = 0
+    end
+    object btnRefresh: TButton
+      Left = 85
+      Height = 25
+      Top = 10
+      Width = 75
+      Caption = 'Refresh'
+      OnClick = btnRefreshClick
+      TabOrder = 1
+    end
+    object btnDecision: TButton
+      Left = 163
+      Height = 25
+      Top = 10
+      Width = 75
+      Caption = 'Decision'
+      Color = clBlue
+      Font.Color = clBlue
+      OnClick = btnDecisionClick
+      ParentFont = False
+      TabOrder = 2
+    end
+    object btnFund: TButton
+      Left = 241
+      Height = 25
+      Top = 10
+      Width = 75
+      Caption = 'Fund'
+      OnClick = btnFundClick
+      TabOrder = 3
+    end
+    object btnReset: TButton
+      Left = 319
+      Height = 26
+      Top = 10
+      Width = 75
+      Caption = 'Reset '
+      OnClick = btnResetClick
+      TabOrder = 4
+    end
+    object btnDelete: TButton
+      Left = 396
+      Height = 25
+      Top = 10
+      Width = 75
+      Caption = 'Delete'
+      OnClick = btnDeleteClick
+      TabOrder = 5
+    end
+    object btnQty: TButton
+      Left = 473
+      Height = 25
+      Top = 10
+      Width = 75
+      Caption = 'Set Qty'
+      OnClick = btnQtyClick
+      TabOrder = 6
+    end
+    object Label1: TLabel
+      Left = 628
+      Height = 15
+      Top = 5
+      Width = 34
+      Caption = 'Label1'
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 628
+      Height = 15
+      Top = 24
+      Width = 34
+      Caption = 'Label4'
+      ParentColor = False
+    end
+  end
+  object PanelTop: TPanel
+    Left = 0
+    Height = 256
+    Top = 0
+    Width = 1200
+    Align = alTop
+    ClientHeight = 256
+    ClientWidth = 1200
+    TabOrder = 2
+    object GroupBox1: TGroupBox
+      Left = 1
+      Height = 254
+      Top = 1
+      Width = 370
+      Align = alLeft
+      Caption = 'Leases (Pending Batch)'
+      ClientHeight = 234
+      ClientWidth = 366
+      TabOrder = 0
+      object DBGridLeases: TDBGrid
+        Left = 0
+        Height = 192
+        Top = 0
+        Width = 366
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'Lease'
+            Width = 100
+            FieldName = 'lease'
+          end        
+          item
+            Title.Caption = 'Status'
+            Width = 100
+            FieldName = 'Status'
+          end        
+          item
+            Title.Caption = 'Save Session'
+            Width = 84
+            FieldName = 'Post'
+          end>
+        DataSource = DSLeases
+        ReadOnly = True
+        TabOrder = 0
+        OnCellClick = DBGridLeasesCellClick
+      end
+      object Panel2: TPanel
+        Left = 0
+        Height = 42
+        Top = 192
+        Width = 366
+        Align = alBottom
+        ClientHeight = 42
+        ClientWidth = 366
+        Color = clSilver
+        ParentColor = False
+        TabOrder = 1
+        object btnDeleteLease: TButton
+          Left = 16
+          Height = 25
+          Top = 10
+          Width = 75
+          Caption = 'Delete'
+          OnClick = btnDeleteLeaseClick
+          TabOrder = 0
+        end
+        object btnSignLease: TButton
+          Left = 97
+          Height = 25
+          Top = 10
+          Width = 75
+          Caption = 'Sign Lease'
+          OnClick = btnSignLeaseClick
+          TabOrder = 1
+        end
+      end
+    end
+    object GBJournal: TGroupBox
+      Left = 376
+      Height = 254
+      Top = 1
+      Width = 823
+      Align = alClient
+      Caption = 'Lease 1 Funding Journal'
+      ClientHeight = 234
+      ClientWidth = 819
+      TabOrder = 1
+      object DBGridItems1: TDBGrid
+        Left = 0
+        Height = 192
+        Top = 0
+        Width = 819
+        Align = alClient
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'Lease'
+            Width = 40
+            FieldName = 'lease'
+          end        
+          item
+            Title.Caption = 'SKU'
+            Width = 40
+            FieldName = 'item'
+          end        
+          item
+            Title.Caption = 'Qty'
+            Width = 40
+            FieldName = 'qty'
+          end        
+          item
+            Title.Caption = 'Date'
+            Width = 80
+            FieldName = 'date'
+          end        
+          item
+            Title.Caption = 'Time'
+            Width = 80
+            FieldName = 'time'
+          end        
+          item
+            Title.Caption = 'Action'
+            Width = 100
+            FieldName = 'action'
+          end        
+          item
+            Title.Caption = 'Fund Amount'
+            Width = 85
+            FieldName = 'amount'
+          end        
+          item
+            Title.Caption = 'Emp'
+            Width = 40
+            FieldName = 'emp'
+          end        
+          item
+            Title.Caption = 'Batch No'
+            Width = 65
+            FieldName = 'batch'
+          end>
+        DataSource = DSJournal
+        ReadOnly = True
+        TabOrder = 0
+      end
+      object Panel3: TPanel
+        Left = 0
+        Height = 42
+        Top = 192
+        Width = 819
+        Align = alBottom
+        ClientHeight = 42
+        ClientWidth = 819
+        Color = clSilver
+        ParentColor = False
+        TabOrder = 1
+        object Label2: TLabel
+          Left = 394
+          Height = 15
+          Top = 16
+          Width = 29
+          Caption = 'Total:'
+          ParentColor = False
+        end
+        object lblExchange: TLabel
+          Left = 432
+          Height = 15
+          Top = 16
+          Width = 21
+          Caption = '0.00'
+          ParentColor = False
+        end
+        object Label3: TLabel
+          Left = 11
+          Height = 15
+          Top = 16
+          Width = 95
+          Caption = 'Current Batch No:'
+          ParentColor = False
+        end
+        object lblCurrentBatch: TLabel
+          Left = 112
+          Height = 15
+          Top = 16
+          Width = 6
+          Caption = '1'
+          ParentColor = False
+        end
+      end
+    end
+    object Splitter2: TSplitter
+      Left = 371
+      Height = 254
+      Top = 1
+      Width = 5
+    end
+  end
+  object Splitter1: TSplitter
+    Cursor = crVSplit
+    Left = 0
+    Height = 5
+    Top = 256
+    Width = 1200
+    Align = alTop
+    ResizeAnchor = akTop
+  end
+  object GBTriggers: TGroupBox
+    Left = 773
+    Height = 315
+    Top = 261
+    Width = 427
+    Align = alClient
+    Caption = 'Lease 1 Trigger Events'
+    ClientHeight = 295
+    ClientWidth = 423
+    TabOrder = 4
+    object MemoTrigger: TMemo
+      Left = 0
+      Height = 295
+      Top = 0
+      Width = 423
+      Align = alClient
+      Color = clWhite
+      Font.Color = clBlack
+      ParentFont = False
+      ReadOnly = True
+      ScrollBars = ssVertical
+      TabOrder = 0
+    end
+  end
+  object Splitter3: TSplitter
+    Left = 768
+    Height = 315
+    Top = 261
+    Width = 5
+  end
+  object SdfLeases: TSdfDataSet
+    FileMustExist = True
+    ReadOnly = False
+    Schema.Strings = (
+      'Lease'
+      'Status'
+      'Post'
+      ''
+    )
+    FieldDefs = <>
+    AllowMultiLine = False
+    Delimiter = ','
+    FirstLineAsSchema = False
+    StripTrailingDelimiters = False
+    left = 56
+    top = 98
+  end
+  object SdfItems: TSdfDataSet
+    FileMustExist = False
+    ReadOnly = False
+    FileName = 'C:\Users\Roman.Teller\Desktop\Cabinet\APROJECTS\ASF\ProtoMP\items.csv'
+    Schema.Strings = (
+      'lease'
+      'item'
+      'price'
+      'dod'
+      'postfund'
+      'fundDate'
+      'fundTime'
+      'status'
+      'qty'
+      'total'
+      'batch'
+      'reference'
+    )
+    FieldDefs = <    
+      item
+        Name = 'lease'
+        DataType = ftString
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'item'
+        DataType = ftString
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'status'
+        DataType = ftString
+        Precision = -1
+        Size = 8
+      end>
+    AllowMultiLine = False
+    Delimiter = ','
+    FirstLineAsSchema = False
+    StripTrailingDelimiters = False
+    left = 56
+    top = 328
+  end
+  object DSLeases: TDataSource
+    DataSet = SdfLeases
+    left = 128
+    top = 98
+  end
+  object DSItems: TDataSource
+    DataSet = SdfItems
+    left = 128
+    top = 330
+  end
+  object PopMenu: TPopupMenu
+    left = 328
+    top = 320
+    object MenuOpen: TMenuItem
+      Caption = 'Open'
+      OnClick = MenuOpenClick
+    end
+    object MenuDelivered: TMenuItem
+      Caption = 'Deliver'
+      OnClick = MenuDeliveredClick
+    end
+    object MenuDeliverAll: TMenuItem
+      Caption = 'Deliver All Items (In Test Only)'
+      OnClick = MenuDeliverAllClick
+    end
+    object MenuBackordered: TMenuItem
+      Caption = 'Backorder'
+      OnClick = MenuBackorderedClick
+    end
+    object MenuReturned: TMenuItem
+      Caption = 'Return'
+      OnClick = MenuReturnedClick
+    end
+    object MenuSubstitute: TMenuItem
+      Caption = 'Substitute'
+      OnClick = MenuSubstituteClick
+    end
+    object MenuItem1: TMenuItem
+      Caption = 'Substitute w/ Return'
+      OnClick = MenuItem1Click
+    end
+    object MenuCancelled: TMenuItem
+      Caption = 'Cancel'
+      OnClick = MenuCancelledClick
+    end
+    object MenuItem7: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem8: TMenuItem
+      Caption = 'Exit'
+    end
+  end
+  object Calendar: TCalendarDialog
+    Width = 225
+    Height = 192
+    Title = 'Select a Delivery Date'
+    Date = 43137
+    OKCaption = '&OK'
+    CancelCaption = 'Cancel'
+    left = 400
+    top = 320
+  end
+  object SdfJournal: TSdfDataSet
+    FileMustExist = False
+    ReadOnly = False
+    FileName = 'C:\Users\Roman.Teller\Desktop\Cabinet\APROJECTS\ASF\ProtoMP\journal1.csv'
+    Schema.Strings = (
+      'Lease'
+      'Date'
+      'Time'
+      'Item'
+      'Emp'
+      'Qty'
+      'Action'
+      'Amount'
+      'Note'
+      'batch'
+      ''
+    )
+    FieldDefs = <    
+      item
+        Name = 'lease'
+        DataType = ftString
+        Precision = -1
+        Size = 250
+      end    
+      item
+        Name = 'item'
+        DataType = ftString
+        Precision = -1
+        Size = 250
+      end    
+      item
+        Name = 'price'
+        DataType = ftString
+        Precision = -1
+        Size = 250
+      end    
+      item
+        Name = 'dod'
+        DataType = ftString
+        Precision = -1
+        Size = 250
+      end    
+      item
+        Name = 'postfund'
+        DataType = ftString
+        Precision = -1
+        Size = 250
+      end    
+      item
+        Name = 'fundDate'
+        DataType = ftString
+        Precision = -1
+        Size = 250
+      end    
+      item
+        Name = 'fundTime'
+        DataType = ftString
+        Precision = -1
+        Size = 250
+      end    
+      item
+        Name = 'status'
+        DataType = ftString
+        Precision = -1
+        Size = 250
+      end    
+      item
+        Name = 'qty'
+        DataType = ftString
+        Precision = -1
+        Size = 250
+      end    
+      item
+        Name = 'total'
+        DataType = ftString
+        Precision = -1
+        Size = 250
+      end>
+    AllowMultiLine = False
+    Delimiter = ','
+    FirstLineAsSchema = False
+    StripTrailingDelimiters = False
+    left = 392
+    top = 88
+  end
+  object DSJournal: TDataSource
+    DataSet = SdfJournal
+    left = 464
+    top = 88
+  end
+end
